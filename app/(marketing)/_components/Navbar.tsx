@@ -14,10 +14,15 @@ import {
 import { useConvexAuth } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { redirect } from "next/navigation";
 
 const Navbar = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   const scrollTop = useScrollTop(10);
+
+  if (isAuthenticated) {
+    return redirect("/documents");
+  }
 
   return (
     <nav

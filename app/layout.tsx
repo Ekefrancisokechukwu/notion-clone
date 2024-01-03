@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Notion",
+  title: "Notion Clone",
   description: "Your connected workspace for Wiki, Docs and Projects | notion",
 };
 
@@ -20,7 +20,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ConvexClientProvider>
-          <Toaster position="bottom-center" />
+          <Toaster
+            toastOptions={{
+              style: {
+                background: "#242323",
+                color: "#fff",
+              },
+              className: "class",
+            }}
+            position="bottom-center"
+          />
           {children}
         </ConvexClientProvider>
       </body>

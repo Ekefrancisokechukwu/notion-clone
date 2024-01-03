@@ -11,6 +11,10 @@ import { redirect } from "next/navigation";
 const Heading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
+  if (isAuthenticated) {
+    return redirect("/documents");
+  }
+
   return (
     <div className="max-w-4xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
