@@ -10,14 +10,15 @@ import { ReactElement, ReactNode } from "react";
 type ToolTipProps = {
   trigger: ReactNode;
   contents: ReactNode;
+  placement?: "right" | "left" | "top" | "bottom";
 };
 
-const ToolTip = ({ trigger, contents }: ToolTipProps) => {
+const ToolTip = ({ trigger, contents, placement }: ToolTipProps) => {
   return (
     <TooltipProvider delayDuration={2}>
       <Tooltip>
-        <TooltipContent>{contents}</TooltipContent>
-        <TooltipTrigger>{trigger}</TooltipTrigger>
+        <TooltipContent side={placement}>{contents}</TooltipContent>
+        <TooltipTrigger className="w-full">{trigger}</TooltipTrigger>
       </Tooltip>
     </TooltipProvider>
   );

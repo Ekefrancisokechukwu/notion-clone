@@ -173,24 +173,48 @@ const Navigation = () => {
             isMobile && "opacity-100"
           )}
         >
-          <TooltipProvider delayDuration={2}>
-            <Tooltip>
-              <TooltipTrigger>
-                <ChevronsLeft className="h-6 w-6" />
-              </TooltipTrigger>
-              <TooltipContent>
+          <ToolTip
+            contents={
+              <>
+                {" "}
                 <p className="text-xs">Close sidebar</p>
                 <p className="text-xs text-muted-foreground">Ctrl \</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+              </>
+            }
+            trigger={<ChevronsLeft className="h-6 w-6" />}
+          />
         </div>
         <div>
           <UserItem />
-          <Item label="Search" icon={Search} isSearch onclick={() => {}} />
-          <Item label="Settings" icon={Settings} onclick={() => {}} />
 
-          <Item onclick={handleCreate} label="New Page" icon={PlusCircle} />
+          <ToolTip
+            trigger={
+              <Item label="Search" icon={Search} isSearch onclick={() => {}} />
+            }
+            contents={
+              <>
+                <p className="text-xs">Search and quickly jump to a page</p>
+                <p className="text-xs text-muted-foreground">Ctrl+K</p>
+              </>
+            }
+            placement="right"
+          />
+
+          <ToolTip
+            contents={<p className="text-xs">Manage your settings</p>}
+            trigger={
+              <Item label="Settings" icon={Settings} onclick={() => {}} />
+            }
+            placement="right"
+          />
+
+          <ToolTip
+            contents={<p className="text-xs">Create a new page</p>}
+            trigger={
+              <Item onclick={handleCreate} label="New Page" icon={PlusCircle} />
+            }
+            placement="right"
+          />
         </div>
 
         <div className="mt-4">
@@ -218,9 +242,12 @@ const Navigation = () => {
               <Tooltip>
                 <TooltipTrigger>
                   <div onClick={resetWidth} className="group/btn inline-block">
-                    <button className=" transition duration-150  group-hover/btn:bg-neutral-300   rounded-md hover:">
+                    <span
+                      role="button"
+                      className="inline-block transition duration-150  group-hover/btn:bg-neutral-300   rounded-md hover:"
+                    >
                       <ChevronsRight className="h-6 w-6 hidden group-hover/btn:block  " />
-                    </button>
+                    </span>
                     <button>
                       <MenuIcon
                         role="button"
